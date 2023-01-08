@@ -1,0 +1,92 @@
+{
+	"__comment": "Designed by Blay09 with Cubik Studio - https://cubik.studio",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "cookingforblockheads:blocks/skillet_top",
+		"side": "cookingforblockheads:blocks/cooking_pot_side",
+		"top": "cookingforblockheads:blocks/cooking_pot_top",
+		"bottom": "cookingforblockheads:blocks/cooking_pot_bottom",
+		"handle": "cookingforblockheads:blocks/skillet_side"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "saucepan",
+			"from": [ 1, 0, 9 ],
+			"to": [ 2, 3, 15 ],
+			"faces": {
+				"down": { "uv": [ 2, 2, 4, 14 ], "texture": "#bottom", "cullface": "down" },
+				"up": { "uv": [ 2, 2, 4, 14 ], "texture": "#top" },
+				"north": { "uv": [ 12, 6, 14, 12 ], "texture": "#side" },
+				"south": { "uv": [ 2, 6, 4, 12 ], "texture": "#side" },
+				"west": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" },
+				"east": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" }
+			}
+		},
+		{
+			"__comment": "saucepan1",
+			"from": [ -3, 2, 11.5 ],
+			"to": [ 1, 3, 12.5 ],
+			"faces": {
+				"down": { "uv": [ 11, 6, 13, 14 ], "texture": "#handle", "rotation": 90 },
+				"up": { "uv": [ 7, 6, 9, 14 ], "texture": "#handle", "rotation": 90 },
+				"north": { "uv": [ 5, 6, 7, 14 ], "texture": "#handle", "rotation": 270 },
+				"south": { "uv": [ 9, 6, 11, 14 ], "texture": "#handle", "rotation": 90 },
+				"west": { "uv": [ 3, 14, 5, 16 ], "texture": "#handle" },
+				"east": { "uv": [ 7, 14, 9, 16 ], "texture": "#handle" }
+			}
+		},
+		{
+			"__comment": "saucepan",
+			"from": [ 6, 0, 9 ],
+			"to": [ 7, 3, 15 ],
+			"faces": {
+				"down": { "uv": [ 2, 2, 4, 14 ], "texture": "#bottom", "cullface": "down" },
+				"up": { "uv": [ 12, 2, 14, 14 ], "texture": "#top" },
+				"north": { "uv": [ 2, 6, 4, 12 ], "texture": "#side" },
+				"south": { "uv": [ 12, 6, 14, 12 ], "texture": "#side" },
+				"west": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" },
+				"east": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" }
+			}
+		},
+		{
+			"__comment": "saucepan",
+			"from": [ 2, 0, 9 ],
+			"to": [ 6, 3, 10 ],
+			"faces": {
+				"down": { "uv": [ 4, 2, 11.5, 4 ], "texture": "#bottom", "cullface": "down" },
+				"up": { "uv": [ 4, 2, 12, 4 ], "texture": "#top" },
+				"north": { "uv": [ 4, 6, 12, 12 ], "texture": "#side" },
+				"south": { "uv": [ 4, 6, 12, 12 ], "texture": "#side" },
+				"west": { "uv": [ 9, 13, 10, 16 ], "texture": "#side" },
+				"east": { "uv": [ 6, 13, 7, 16 ], "texture": "#side" }
+			}
+		},
+		{
+			"__comment": "saucepan",
+			"from": [ 2, 0, 14 ],
+			"to": [ 6, 3, 15 ],
+			"faces": {
+				"down": { "uv": [ 4, 12, 11.5, 14 ], "texture": "#bottom", "cullface": "down" },
+				"up": { "uv": [ 4, 12, 12, 14 ], "texture": "#top" },
+				"north": { "uv": [ 4, 6, 12, 12 ], "texture": "#side" },
+				"south": { "uv": [ 4, 6, 12, 12 ], "texture": "#side" },
+				"west": { "uv": [ 14, 13, 15, 16 ], "texture": "#side" },
+				"east": { "uv": [ 1, 13, 2, 16 ], "texture": "#side" }
+			}
+		},
+		{
+			"__comment": "saucepan",
+			"from": [ 2, 0, 10 ],
+			"to": [ 6, 0.5, 14 ],
+			"faces": {
+				"down": { "uv": [ 4, 4, 12, 12 ], "texture": "#bottom", "cullface": "down" },
+				"up": { "uv": [ 4, 4, 12, 12 ], "texture": "#bottom" },
+				"north": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" },
+				"south": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" },
+				"west": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" },
+				"east": { "uv": [ 2, 6, 14, 12 ], "texture": "#side" }
+			}
+		}
+	]
+}

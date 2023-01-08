@@ -1,0 +1,32 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cookingforblockheads:cooking_table",
+    "textures": {
+	  "countertop": "cookingforblockheads:blocks/jungle_counter_top",
+	  "counterside": "cookingforblockheads:blocks/jungle_counter_side",
+	  "counterfront": "cookingforblockheads:blocks/jungle_counter_front_drawers",
+	  "counterbook": "cookingforblockheads:blocks/counter_book",
+      "particle": "cookingforblockheads:blocks/jungle_counter_side",
+      "backsplash": "minecraft:blocks/hardened_clay_stained_black"
+    },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "west": {
+        "y": -90
+      },
+      "east": {
+        "y": 90
+      },
+      "north": {
+      },
+      "south": {
+        "y": 180
+      }
+    }
+  }
+}

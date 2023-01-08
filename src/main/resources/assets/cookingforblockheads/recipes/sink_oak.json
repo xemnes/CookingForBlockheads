@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "cookingforblockheads:sink_oak"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "III",
+    "CBC",
+    "CCC"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:stone_slab",
+      "data": 7
+    },
+    "C": {
+      "item": "minecraft:planks",
+	  "data": 0
+    },
+    "B": {
+      "item": "minecraft:water_bucket"
+    }
+  }
+}

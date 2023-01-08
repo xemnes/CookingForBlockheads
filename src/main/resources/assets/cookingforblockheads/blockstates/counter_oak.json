@@ -1,0 +1,50 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+	  "backsplash": "cookingforblockheads:blocks/oak_counter_side",
+	  "counterside": "cookingforblockheads:blocks/oak_counter_side",
+	  "countertop": "cookingforblockheads:blocks/oak_counter_top",
+	  "counterfront": "cookingforblockheads:blocks/oak_counter_front",
+      "particle": "cookingforblockheads:blocks/oak_counter_side"
+    },
+    "model": "cookingforblockheads:counter_static",
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{
+      "model": "cookingforblockheads:counter_inventory"
+    }],
+    "facing": {
+      "west": {
+        "y": -90
+      },
+      "east": {
+        "y": 90
+      },
+      "north": {
+      },
+      "south": {
+        "y": 180
+      }
+    },
+    "flipped": {
+      "true": {
+      },
+      "false": {
+      }
+    },
+    "pass": {
+      "static": {
+        "model": "cookingforblockheads:counter_static"
+      },
+      "door": {
+        "model": "cookingforblockheads:counter_door"
+      },
+      "door_flipped": {
+        "model": "cookingforblockheads:counter_door_flipped"
+      }
+    }
+  }
+}

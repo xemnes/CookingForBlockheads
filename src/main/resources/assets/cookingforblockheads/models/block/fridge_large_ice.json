@@ -1,0 +1,27 @@
+{
+	"__comment": "Designed by Blay09 with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net (Sub Model: Static)",
+	"textures": {
+		"ice": "blocks/ice_packed",
+		"front": "cookingforblockheads:blocks/fridge_back"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Box7",
+			"from": [ 2, 2, 5 ],
+			"to": [ 14, 4, 14 ],
+			"faces": {
+				"up": { "uv": [ 2, 5, 14, 14 ], "texture": "#ice" }
+			}
+		},
+		{
+			"__comment": "Box7",
+			"from": [ 2, 2, 4 ],
+			"to": [ 14, 5, 5 ],
+			"faces": {
+				"up": { "uv": [ 14, 2, 2, 3 ], "texture": "#front" },
+				"north": { "uv": [ 2, 2, 14, 5 ], "texture": "#front" },
+				"south": { "uv": [ 14, 2, 2, 5 ], "texture": "#front" }
+			}
+		}
+	]
+}

@@ -1,0 +1,29 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+	  "counterside": "cookingforblockheads:blocks/birch_counter_side",
+	  "countertop": "cookingforblockheads:blocks/birch_counter_top",
+      "particle": "cookingforblockheads:blocks/birch_counter_side"
+    },
+    "model": "cookingforblockheads:corner",
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "west": {
+        "y": -90
+      },
+      "east": {
+        "y": 90
+      },
+      "north": {
+      },
+      "south": {
+        "y": 180
+      }
+    }
+  }
+}

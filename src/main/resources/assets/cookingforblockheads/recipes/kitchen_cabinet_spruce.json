@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "cookingforblockheads:cabinet_spruce"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CCC",
+    "CBC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:planks",
+	  "data": 1
+    },
+    "B": {
+      "item": "#CHEST"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "cookingforblockheads:cooking_table_spruce"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SSS",
+    "CBC",
+    "CCC"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:wooden_slab",
+	  "data": 1
+    },
+    "C": {
+      "item": "minecraft:planks",
+	  "data": 1
+    },
+    "B": {
+      "item": "cookingforblockheads:recipe_book",
+      "data": 2
+    }
+  }
+}

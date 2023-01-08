@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "cookingforblockheads:cabinet_darkoak"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "CCC",
+    "CBC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:planks",
+	  "data": 5
+    },
+    "B": {
+      "item": "#CHEST"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+	  "counterside": "cookingforblockheads:blocks/acacia_counter_side",
+	  "countertop": "cookingforblockheads:blocks/acacia_counter_top",
+	  "counterfront": "cookingforblockheads:blocks/acacia_counter_front",
+      "particle": "cookingforblockheads:blocks/acacia_counter_side",
+      "foot": "minecraft:blocks/hardened_clay_stained_black",
+      "backsplash": "minecraft:blocks/hardened_clay_stained_black",
+      "handle": "cookingforblockheads:blocks/handle"
+    },
+    "model": "cookingforblockheads:cabinet_static",
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{
+      "model": "cookingforblockheads:cabinet_inventory"
+    }],
+    "facing": {
+      "west": {
+        "y": -90
+      },
+      "east": {
+        "y": 90
+      },
+      "north": {
+      },
+      "south": {
+        "y": 180
+      }
+    },
+    "flipped": {
+      "true": {
+      },
+      "false": {
+      }
+    },
+    "pass": {
+      "static": {
+        "model": "cookingforblockheads:cabinet_static"
+      },
+      "door": {
+        "model": "cookingforblockheads:cabinet_door"
+      },
+      "door_flipped": {
+        "model": "cookingforblockheads:cabinet_door_flipped"
+      }
+    }
+  }
+}

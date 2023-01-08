@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "cookingforblockheads:corner_darkoak"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SSS",
+    "CCC",
+    "CCC"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:wooden_slab",
+	  "data": 5
+    },
+    "C": {
+      "item": "minecraft:planks",
+	  "data": 5
+    }
+  }
+}

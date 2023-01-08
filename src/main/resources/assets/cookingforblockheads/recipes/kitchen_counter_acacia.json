@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "cookingforblockheads:counter_acacia"
+  },
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "SSS",
+    "CBC",
+    "CCC"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:wooden_slab",
+	  "data": 4
+    },
+    "C": {
+      "item": "minecraft:planks",
+	  "data": 4
+    },
+    "B": {
+      "item": "#CHEST"
+    }
+  }
+}

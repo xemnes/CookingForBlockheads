@@ -1,0 +1,40 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cookingforblockheads:sink",
+    "textures": {
+	  "particle": "cookingforblockheads:blocks/acacia_counter_front",
+	  "counterfront": "cookingforblockheads:blocks/acacia_counter_front",
+	  "counterside": "cookingforblockheads:blocks/acacia_counter_sink",
+	  "sinkside": "cookingforblockheads:blocks/sink_side",
+	  "sinktop": "cookingforblockheads:blocks/sink_top",
+	  "tap": "cookingforblockheads:blocks/toaster_front",
+	  "counterbottom": "cookingforblockheads:blocks/acacia_counter_top"
+    },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "facing": {
+      "west": {
+        "y": -90
+      },
+      "east": {
+        "y": 90
+      },
+      "north": {
+      },
+      "south": {
+        "y": 180
+      }
+    },
+    "flipped": {
+      "true": {
+        "model": "cookingforblockheads:sink_flipped"
+      },
+      "false": {
+      }
+    }
+  }
+}
