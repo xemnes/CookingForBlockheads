@@ -25,16 +25,10 @@
     "flipped": {
       "true": {
         "submodel": {
-          "hinge": {
-            "model": "cookingforblockheads:fridge_large_hinge_right"
-          }
         }
       },
       "false": {
         "submodel": {
-          "hinge": {
-            "model": "cookingforblockheads:fridge_large_hinge_left"
-          }
         }
       }
     },
@@ -42,7 +36,7 @@
       "true": {
         "submodel": {
           "preservation_chamber": {
-            "model": "cookingforblockheads:fridge_preservation_large"
+            "model": "cookingforblockheads:fridge_large_preservation"
           }
         }
       },
@@ -51,6 +45,11 @@
     },
     "ice_unit": {
       "true": {
+        "submodel": {
+          "ice_unit": {
+            "model": "cookingforblockheads:fridge_large_ice"
+          }
+        }
       },
       "false": {
       }

@@ -38,12 +38,9 @@ public class FruitBasketRenderer extends TileEntitySpecialRenderer<TileFruitBask
                 float antiZFight = ((rowIndex % 2 != 0) ? 0.1f : 0f) + i * 0.01f;
                 float curX = -0.75f + rowIndex * 0.25f + ((colIndex == 3) ? 0.15f : 0f);
                 float curY = -1.35f;
-                if (BlockKitchen.shouldBlockRenderLowered(tileEntity.getWorld(), tileEntity.getPos())) {
-                    curY -= 0.2f;
-                }
 
-                float curZ = -0.85f + colIndex * 0.35f + antiZFight;
-                RenderUtils.renderItem(itemRenderer, itemStack, curX, curY, curZ, -25f, 1f, 0f, 0f);
+                float curZ = -0.85f + colIndex * 0.4f + antiZFight;
+                RenderUtils.renderItem(itemRenderer, itemStack, curX, curY, curZ, -35f, 1f, 0f, 0f);
             }
         }
 

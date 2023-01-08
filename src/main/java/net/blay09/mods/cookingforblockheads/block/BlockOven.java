@@ -5,6 +5,7 @@ import net.blay09.mods.cookingforblockheads.ItemUtils;
 import net.blay09.mods.cookingforblockheads.item.ModItems;
 import net.blay09.mods.cookingforblockheads.network.handler.GuiHandler;
 import net.blay09.mods.cookingforblockheads.registry.CookingRegistry;
+import net.blay09.mods.cookingforblockheads.tile.TileFridge;
 import net.blay09.mods.cookingforblockheads.tile.TileOven;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -13,11 +14,14 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -34,10 +38,17 @@ import java.util.Random;
 public class BlockOven extends BlockKitchen {
 
     public static PropertyBool POWERED = PropertyBool.create("powered");
+    public static PropertyBool ACTIVE = PropertyBool.create("active");
 
     public static final String name = "oven";
     public static final ResourceLocation registryName = new ResourceLocation(CookingForBlockheads.MOD_ID, name);
     private static final Random random = new Random();
+
+    private static final AxisAlignedBB BOUNDING_BOX_NORTH = new AxisAlignedBB(1, 1, 1, 0, 0, 0.0625);
+    private static final AxisAlignedBB BOUNDING_BOX_EAST = new AxisAlignedBB(0.9375, 1, 1, 0, 0, 0);
+    private static final AxisAlignedBB BOUNDING_BOX_SOUTH = new AxisAlignedBB(1, 1, 0.9375, 0, 0, 0);
+    private static final AxisAlignedBB BOUNDING_BOX_WEST = new AxisAlignedBB(1, 1, 1, 0.0625, 0, 0);
+
 
     public BlockOven() {
         super(Material.IRON);
@@ -50,7 +61,23 @@ public class BlockOven extends BlockKitchen {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, POWERED);
+        return new BlockStateContainer(this, FACING, POWERED, ACTIVE);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+        switch(state.getValue(FACING)) {
+            case EAST:
+                return BOUNDING_BOX_EAST;
+            case WEST:
+                return BOUNDING_BOX_WEST;
+            case SOUTH:
+                return BOUNDING_BOX_SOUTH;
+            case NORTH:
+            default:
+                return BOUNDING_BOX_NORTH;
+        }
     }
 
     @Override
@@ -148,7 +175,12 @@ public class BlockOven extends BlockKitchen {
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
         TileEntity tileEntity = worldIn.getTileEntity(pos);
         boolean hasPowerUpgrade = tileEntity instanceof TileOven && ((TileOven) tileEntity).hasPowerUpgrade();
-        return state.withProperty(POWERED, hasPowerUpgrade);
+        state = state.withProperty(POWERED, hasPowerUpgrade);
+
+        boolean isBurning = tileEntity instanceof TileOven && ((TileOven) tileEntity).isBurning();
+        state = state.withProperty(ACTIVE, isBurning);
+
+        return state;
     }
 
     @Override
@@ -166,6 +198,11 @@ public class BlockOven extends BlockKitchen {
             float z = (float) pos.getZ() + 0.5f;
             float f3 = 0.52f;
             float f4 = random.nextFloat() * 0.6f - 0.3f;
+
+            if (rand.nextDouble() < 0.1D)
+            {
+                world.playSound((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+            }
 
             if (facing == EnumFacing.WEST) {
                 world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, (double) (x - f3), (double) y, (double) (z + f4), 0, 0, 0);

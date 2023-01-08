@@ -46,7 +46,14 @@ public class GuiHandler implements IGuiHandler {
             TileEntity tileEntity = world.getTileEntity(pos);
             switch (id) {
                 case COOKING_TABLE:
-                    if (world.getBlockState(pos).getBlock() == ModBlocks.cookingTable) {
+                    if (world.getBlockState(pos).getBlock() == ModBlocks.cookingTable
+                            || world.getBlockState(pos).getBlock() == ModBlocks.cookingTableOak
+                            || world.getBlockState(pos).getBlock() == ModBlocks.cookingTableSpruce
+                            || world.getBlockState(pos).getBlock() == ModBlocks.cookingTableBirch
+                            || world.getBlockState(pos).getBlock() == ModBlocks.cookingTableJungle
+                            || world.getBlockState(pos).getBlock() == ModBlocks.cookingTableAcacia
+                            || world.getBlockState(pos).getBlock() == ModBlocks.cookingTableDarkOak
+                    ) {
                         if (tileEntity instanceof TileCookingTable) {
                             if (((TileCookingTable) tileEntity).hasNoFilterBook()) {
                                 return new ContainerRecipeBook(player).setNoFilter().allowCrafting().setKitchenMultiBlock(new KitchenMultiBlock(world, pos));

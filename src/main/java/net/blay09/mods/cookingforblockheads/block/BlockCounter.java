@@ -14,7 +14,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -29,7 +28,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.DyeUtils;
-import net.minecraftforge.oredict.OreDictionary;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -54,8 +52,8 @@ public class BlockCounter extends BlockKitchen {
 
     public static final PropertyEnum<ModelPass> PASS = PropertyEnum.create("pass", ModelPass.class);
 
-    public BlockCounter() {
-        super(Material.ROCK);
+    public BlockCounter(Material material) {
+        super(material);
 
         setUnlocalizedName(registryName.toString());
         setSoundType(SoundType.STONE);
@@ -65,17 +63,12 @@ public class BlockCounter extends BlockKitchen {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, FLIPPED, PASS, COLOR);
+        return new BlockStateContainer(this, FACING, FLIPPED, PASS);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-        TileEntity tileEntity = world.getTileEntity(pos);
-        if (tileEntity instanceof IDyeableKitchen) {
-            return state.withProperty(COLOR, ((IDyeableKitchen) tileEntity).getDyedColor());
-        }
-
         return state;
     }
 
@@ -183,6 +176,21 @@ public class BlockCounter extends BlockKitchen {
         for (String s : I18n.format("tooltip." + registryName + ".description").split("\\\\n")) {
             tooltip.add(TextFormatting.GRAY + s);
         }
+        tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.cookingforblockheads:dyeable"));
+    }
+
+    @Override
+    public boolean recolorBlock(World world, BlockPos pos, EnumFacing side, EnumDyeColor color) {
+        TileEntity tileEntity = world.getTileEntity(pos);
+        if (tileEntity instanceof TileCounter) {
+            TileCounter tile = (TileCounter) tileEntity;
+            if (tile.getDyedColor() == color) {
+                return false;
+            }
+            tile.setDyedColor(color);
+        }
+
+        return true;
     }
 
 }

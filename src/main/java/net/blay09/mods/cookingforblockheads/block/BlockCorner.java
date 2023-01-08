@@ -9,7 +9,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -32,15 +31,8 @@ public class BlockCorner extends BlockKitchen {
     public static final String name = "corner";
     public static final ResourceLocation registryName = new ResourceLocation(CookingForBlockheads.MOD_ID, name);
 
-    private static final AxisAlignedBB[] BOUNDING_BOXES = new AxisAlignedBB[]{
-            new AxisAlignedBB(0, 0, 0, 0.96875, 0.9375, 0.96875),
-            new AxisAlignedBB(0.03125, 0, 0.03125, 1, 0.9375, 1),
-            new AxisAlignedBB(0, 0, 0.03125, 0.96875, 0.9375, 1),
-            new AxisAlignedBB(0.03125, 0, 0, 1, 0.9375, 0.96875)
-    };
-
-    public BlockCorner() {
-        super(Material.ROCK);
+    public BlockCorner(Material material) {
+        super(material);
 
         setUnlocalizedName(registryName.toString());
         setSoundType(SoundType.STONE);
@@ -50,17 +42,12 @@ public class BlockCorner extends BlockKitchen {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, COLOR);
+        return new BlockStateContainer(this, FACING);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-        TileEntity tileEntity = world.getTileEntity(pos);
-        if (tileEntity instanceof TileCorner) {
-            return state.withProperty(COLOR, ((TileCorner) tileEntity).getDyedColor());
-        }
-
         return state;
     }
 
@@ -78,11 +65,6 @@ public class BlockCorner extends BlockKitchen {
 		}
 
         return false;
-    }
-
-    @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        return BOUNDING_BOXES[state.getValue(FACING).getIndex() - 2];
     }
 
     @Override
@@ -111,6 +93,7 @@ public class BlockCorner extends BlockKitchen {
         for (String s : I18n.format("tooltip." + registryName + ".description").split("\\\\n")) {
             tooltip.add(TextFormatting.GRAY + s);
         }
+        tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.cookingforblockheads:dyeable"));
     }
 
 }

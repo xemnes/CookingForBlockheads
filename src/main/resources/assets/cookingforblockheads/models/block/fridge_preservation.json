@@ -1,50 +1,46 @@
 {
 	"__comment": "Designed by Blay09 with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net (Sub Model: Static)",
 	"textures": {
-		"particle": "cookingforblockheads:blocks/fridge_side",
-		"fridge_side": "cookingforblockheads:blocks/fridge_side",
-		"fridge_top": "cookingforblockheads:blocks/fridge_top",
-		"fridge_back": "cookingforblockheads:blocks/fridge_back",
-		"fridgeLarge_inside": "cookingforblockheads:blocks/fridge_inside"
+		"fridge_side": "cookingforblockheads:blocks/fridge_side"
 	},
-	"elements": [
+	"elements": [ 	 
 		{
 			"__comment": "Box11",
-			"from": [ 11, 11, 3 ],
-			"to": [ 13, 11.5, 12.5 ],
+			"from": [ 13, 11, 3 ],
+			"to": [ 14, 11.5, 14 ],
 			"faces": {
-				"down": { "uv": [ 11, 3.5, 13, 13 ], "texture": "#fridge_side" },
-				"up": { "uv": [ 11, 3, 13, 12.5 ], "texture": "#fridge_side" },
-				"north": { "uv": [ 3, 4.5, 5, 5 ], "texture": "#fridge_side" },
-				"south": { "uv": [ 11, 4.5, 13, 5 ], "texture": "#fridge_side" },
-				"west": { "uv": [ 3, 4.5, 12.5, 5 ], "texture": "#fridge_side" },
-				"east": { "uv": [ 3.5, 4.5, 13, 5 ], "texture": "#fridge_side" }
+				"down": { "uv": [ 15, 3, 16, 14 ], "texture": "#fridge_side" },
+				"up": { "uv": [ 15, 3, 16, 14 ], "texture": "#fridge_side" },
+				"north": { "uv": [ 15, 4.5, 16, 5 ], "texture": "#fridge_side" },
+				"south": { "uv": [ 13, 4.5, 14, 5 ], "texture": "#fridge_side" },
+				"west": { "uv": [ 3, 4.5, 14, 5 ], "texture": "#fridge_side" },
+				"east": { "uv": [ 2, 4.5, 13, 5 ], "texture": "#fridge_side" }
 			}
 		},
 		{
 			"__comment": "Box11",
-			"from": [ 11, 11.5, 3 ],
-			"to": [ 13, 12, 3.5 ],
+			"from": [ 13, 11.5, 3 ],
+			"to": [ 14, 12, 3.5 ],
 			"faces": {
-				"down": { "uv": [ 11, 12.5, 13, 13 ], "texture": "#fridge_side" },
-				"up": { "uv": [ 11, 3, 13, 3.5 ], "texture": "#fridge_side" },
-				"north": { "uv": [ 3, 4, 5, 4.5 ], "texture": "#fridge_side" },
-				"south": { "uv": [ 11, 4, 13, 4.5 ], "texture": "#fridge_side" },
+				"down": { "uv": [ 13, 12.5, 14, 13 ], "texture": "#fridge_side" },
+				"up": { "uv": [ 14, 5, 15, 5.5 ], "texture": "#fridge_side" },
+				"north": { "uv": [ 15, 4.5, 16, 5 ], "texture": "#fridge_side" },
+				"south": { "uv": [ 13, 4, 14, 4.5 ], "texture": "#fridge_side" },
 				"west": { "uv": [ 3, 4, 3.5, 4.5 ], "texture": "#fridge_side" },
 				"east": { "uv": [ 12.5, 4, 13, 4.5 ], "texture": "#fridge_side" }
 			}
 		},
 		{
 			"__comment": "Box11",
-			"from": [ 11, 11.5, 3.5 ],
-			"to": [ 11.5, 12, 12.5 ],
+			"from": [ 12.5, 11, 3 ],
+			"to": [ 13, 12, 14 ],
 			"faces": {
-				"down": { "uv": [ 11, 3.5, 11.5, 12.5 ], "texture": "#fridge_side" },
-				"up": { "uv": [ 11, 3.5, 11.5, 12.5 ], "texture": "#fridge_side" },
-				"north": { "uv": [ 4.5, 4, 5, 4.5 ], "texture": "#fridge_side" },
-				"south": { "uv": [ 11, 4, 11.5, 4.5 ], "texture": "#fridge_side" },
-				"west": { "uv": [ 3.5, 4, 12.5, 4.5 ], "texture": "#fridge_side" },
-				"east": { "uv": [ 3.5, 4, 12.5, 4.5 ], "texture": "#fridge_side" }
+				"down": { "uv": [ 15.5, 3, 16, 14 ], "texture": "#fridge_side" },
+				"up": { "uv": [ 14.5, 3, 15, 14 ], "texture": "#fridge_side" },
+				"north": { "uv": [ 3, 4, 3.5, 5 ], "texture": "#fridge_side" },
+				"south": { "uv": [ 12.5, 4, 13, 5 ], "texture": "#fridge_side" },
+				"west": { "uv": [ 4, 1, 15, 2 ], "texture": "#fridge_side" },
+				"east": { "uv": [ 2, 4, 13, 5 ], "texture": "#fridge_side" }
 			}
 		}
 	]

@@ -14,9 +14,6 @@
         "door": {
           "model": "cookingforblockheads:fridge_door"
         },
-        "hinge": {
-          "model": "cookingforblockheads:fridge_hinge_left"
-        },
         "handle": {
           "model": "cookingforblockheads:fridge_door_handle"
         }
@@ -42,18 +39,8 @@
     },
     "flipped": {
       "true": {
-        "submodel": {
-          "hinge": {
-            "model": "cookingforblockheads:fridge_hinge_right"
-          }
-        }
       },
       "false": {
-        "submodel": {
-          "hinge": {
-            "model": "cookingforblockheads:fridge_hinge_left"
-          }
-        }
       }
     },
     "preservation_chamber": {
@@ -69,6 +56,11 @@
     },
     "ice_unit": {
       "true": {
+        "submodel": {
+          "ice_unit": {
+            "model": "cookingforblockheads:fridge_ice"
+          }
+        }
       },
       "false": {
       }

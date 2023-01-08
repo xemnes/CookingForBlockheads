@@ -5,6 +5,7 @@ import net.blay09.mods.cookingforblockheads.ModConfig;
 import net.blay09.mods.cookingforblockheads.api.capability.CapabilityKitchenItemProvider;
 import net.blay09.mods.cookingforblockheads.api.capability.KitchenItemProvider;
 import net.blay09.mods.cookingforblockheads.block.BlockCounter;
+import net.blay09.mods.cookingforblockheads.block.ModBlocks;
 import net.blay09.mods.cookingforblockheads.compat.Compat;
 import net.blay09.mods.cookingforblockheads.network.VanillaPacketHandler;
 import net.minecraft.block.state.IBlockState;
@@ -46,10 +47,12 @@ public class TileCounter extends TileEntity implements ITickable, IDropoffManage
 
     private boolean isDirty;
 
-    private EnumDyeColor color = EnumDyeColor.WHITE;
+    private EnumDyeColor color = EnumDyeColor.SILVER;
 
     private EnumFacing cachedFacing;
     private boolean cachedFlipped;
+
+    private boolean isWood = false;
 
     public TileCounter() {
         doorAnimator.setOpenRadius(2);
@@ -125,6 +128,21 @@ public class TileCounter extends TileEntity implements ITickable, IDropoffManage
         return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
     }
 
+    public TileCounter getBaseTile() {
+        if (!hasWorld()) {
+            return this;
+        }
+
+        if (world.getBlockState(pos.down()).getBlock() == ModBlocks.counter) {
+            TileCounter baseTile = (TileCounter) world.getTileEntity(pos.down());
+            if (baseTile != null) {
+                return baseTile;
+            }
+        }
+
+        return this;
+    }
+
     public IItemHandler getItemHandler() {
         return itemHandler;
     }
@@ -155,9 +173,7 @@ public class TileCounter extends TileEntity implements ITickable, IDropoffManage
     @Override
     public void setDyedColor(EnumDyeColor color) {
         this.color = color;
-        IBlockState state = world.getBlockState(pos);
-        world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 3);
-        markDirty();
+        markDirtyAndUpdate();
     }
 
     @Override
@@ -182,6 +198,9 @@ public class TileCounter extends TileEntity implements ITickable, IDropoffManage
         return cachedFacing;
     }
 
+    public boolean isWood() {
+        return isWood;
+    }
     public boolean isFlipped() {
         return cachedFlipped;
     }
@@ -193,5 +212,11 @@ public class TileCounter extends TileEntity implements ITickable, IDropoffManage
 
     public String getUnlocalizedName() {
         return CookingForBlockheads.MOD_ID + ":counter";
+    }
+
+    public void markDirtyAndUpdate() {
+        IBlockState state = world.getBlockState(pos);
+        world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 3);
+        markDirty();
     }
 }

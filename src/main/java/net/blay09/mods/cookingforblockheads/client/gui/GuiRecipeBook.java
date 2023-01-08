@@ -75,26 +75,27 @@ public class GuiRecipeBook extends GuiContainer {
     @Override
     public void initGui() {
         ySize = 174;
+        xSize = 176 + 27;
         super.initGui();
 
         Keyboard.enableRepeatEvents(true);
 
-        btnPrevRecipe = new GuiButton(0, width / 2 - 79, height / 2 - 51, 13, 20, "<");
+        btnPrevRecipe = new GuiButton(0, width / 2 - 92, height / 2 - 51, 13, 20, "<");
         btnPrevRecipe.visible = false;
         buttonList.add(btnPrevRecipe);
 
-        btnNextRecipe = new GuiButton(1, width / 2 - 9, height / 2 - 51, 13, 20, ">");
+        btnNextRecipe = new GuiButton(1, width / 2 - 24, height / 2 - 51, 13, 20, ">");
         btnNextRecipe.visible = false;
         buttonList.add(btnNextRecipe);
 
-        searchBar = new GuiTextField(2, fontRenderer, guiLeft + xSize - 78, guiTop - 5, 70, 10);
+        searchBar = new GuiTextField(2, fontRenderer, guiLeft + xSize - 105, guiTop - 5, 70, 10);
 //		searchBar.setFocused(true);
 
         int yOffset = -80;
         int id = 3;
 
         for (ISortButton button : CookingRegistry.getSortButtons()) {
-            GuiButtonSort sortButton = new GuiButtonSort(id++, width / 2 + 87, height / 2 + yOffset, button);
+            GuiButtonSort sortButton = new GuiButtonSort(id++, width / 2 + 73, height / 2 + yOffset, button);
             buttonList.add(sortButton);
             sortButtons.add(sortButton);
 
@@ -212,7 +213,7 @@ public class GuiRecipeBook extends GuiContainer {
 
         GlStateManager.color(1f, 1f, 1f, 1f);
         mc.getTextureManager().bindTexture(guiTexture);
-        drawTexturedModalRect(guiLeft, guiTop - 10, 0, 0, xSize, ySize + 10);
+        drawTexturedModalRect(guiLeft, guiTop - 10, 0, 0, xSize + 27, ySize + 10);
 
         if (mouseClickY != -1) {
             float pixelsPerFilter = (SCROLLBAR_HEIGHT - scrollBarScaledHeight) / (float) Math.max(1, (int) Math.ceil(container.getItemListCount() / 3f) - VISIBLE_ROWS);
@@ -244,12 +245,12 @@ public class GuiRecipeBook extends GuiContainer {
             for (Slot slot : inventorySlots.inventorySlots) {
                 if (slot instanceof FakeSlotRecipe) {
                     if (CookingRegistry.isNonFoodRecipe(slot.getStack())) {
-                        drawTexturedModalRect(guiLeft + slot.xPos, guiTop + slot.yPos, 176, 76, 16, 16);
+                        drawTexturedModalRect(guiLeft + slot.xPos, guiTop + slot.yPos, 160, 212, 16, 16);
                     }
 
                     FoodRecipeWithStatus recipe = ((FakeSlotRecipe) slot).getRecipe();
                     if (recipe != null && recipe.getStatus() == RecipeStatus.MISSING_TOOLS) {
-                        drawTexturedModalRect(guiLeft + slot.xPos, guiTop + slot.yPos, 176, 92, 16, 16);
+                        drawTexturedModalRect(guiLeft + slot.xPos, guiTop + slot.yPos, 160, 228, 16, 16);
                     }
                 }
             }
@@ -273,7 +274,7 @@ public class GuiRecipeBook extends GuiContainer {
         if (selection != null) {
             for (FakeSlotCraftMatrix slot : container.getCraftingMatrixSlots()) {
                 if (slot.isLocked() && slot.getVisibleStacks().size() > 1) {
-                    drawTexturedModalRect(guiLeft + slot.xPos, guiTop + slot.yPos, 176, 60, 16, 16);
+                    drawTexturedModalRect(guiLeft + slot.xPos, guiTop + slot.yPos, 160, 196, 16, 16);
                 }
             }
         }
@@ -336,7 +337,7 @@ public class GuiRecipeBook extends GuiContainer {
     public void recalculateScrollBar() {
         int scrollBarTotalHeight = SCROLLBAR_HEIGHT - 1;
         this.scrollBarScaledHeight = (int) (scrollBarTotalHeight * Math.min(1f, ((float) VISIBLE_ROWS / (Math.ceil(container.getItemListCount() / 3f)))));
-        this.scrollBarXPos = guiLeft + xSize - SCROLLBAR_WIDTH - 9;
+        this.scrollBarXPos = guiLeft + xSize + -27 - SCROLLBAR_WIDTH - 9;
         this.scrollBarYPos = guiTop + SCROLLBAR_Y + ((scrollBarTotalHeight - scrollBarScaledHeight) * currentOffset / Math.max(1, (int) Math.ceil((container.getItemListCount() / 3f)) - VISIBLE_ROWS));
     }
 

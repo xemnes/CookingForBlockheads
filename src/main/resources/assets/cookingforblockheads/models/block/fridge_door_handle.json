@@ -1,77 +1,23 @@
 {
-  "__comment": "Designed by Blay09 with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net (Sub Model: Door)",
-  "textures": {
-    "particle": "cookingforblockheads:blocks/fridge_side",
-    "fridge_side": "cookingforblockheads:blocks/fridge_side",
-    "fridge_top": "cookingforblockheads:blocks/fridge_top",
-    "fridge_back": "cookingforblockheads:blocks/fridge_back",
-    "fridge_inside": "cookingforblockheads:blocks/fridge_inside"
-  },
-  "elements": [
-    {
-      "__comment": "Door_Handle",
-      "from": [
-        2.5,
-        6.5,
-        0
-      ],
-      "to": [
-        3.5,
-        8.5,
-        1
-      ],
-      "faces": {
-        "down": {
-          "uv": [
-            3,
-            1,
-            4,
-            2
-          ],
-          "texture": "#fridge_top",
-          "cullface": "north"
-        },
-        "up": {
-          "uv": [
-            3,
-            1,
-            4,
-            2
-          ],
-          "texture": "#fridge_top",
-          "cullface": "north"
-        },
-        "north": {
-          "uv": [
-            3,
-            1,
-            4,
-            3
-          ],
-          "texture": "#fridge_top",
-          "cullface": "north"
-        },
-        "west": {
-          "uv": [
-            3,
-            1,
-            4,
-            3
-          ],
-          "texture": "#fridge_top",
-          "cullface": "north"
-        },
-        "east": {
-          "uv": [
-            3,
-            1,
-            4,
-            3
-          ],
-          "texture": "#fridge_top",
-          "cullface": "north"
-        }
-      }
-    }
-  ]
+	"__comment": "Designed by Blay09 with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net (Sub Model: Static)",
+	"textures": {
+		"particle": "cookingforblockheads:blocks/fridge_side",
+		"fridge_door_handle": "cookingforblockheads:blocks/fridge_door",
+		"fridge_door_side": "cookingforblockheads:blocks/fridge_door_side"
+	},
+	"elements": [ 	 
+		{
+			"__comment": "Box9",
+			"from": [ 2, 4, 0 ],
+			"to": [ 3, 12, 1 ],
+			"faces": {
+				"down": { "uv": [ 8.5, 9.5, 9, 10 ], "texture": "#fridge_door_handle" },
+				"up": { "uv": [ 8.5, 6, 9, 6.5 ], "texture": "#fridge_door_handle" },
+				"north": { "uv": [ 8.5, 6, 9, 10 ], "texture": "#fridge_door_handle" },
+				"south": { "uv": [ 8.5, 6, 9, 10 ], "texture": "#fridge_door_handle" },
+				"west": { "uv": [ 8.5, 6, 9, 10 ], "texture": "#fridge_door_handle" },
+				"east": { "uv": [ 8.5, 6, 9, 10 ], "texture": "#fridge_door_handle" }
+			}
+		}
+	]
 }

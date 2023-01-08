@@ -10,10 +10,11 @@
   ],
   "key": {
     "S": {
-      "item": "#STONE"
+      "item": "minecraft:stone_slab",
+	  "data": 0
     },
     "C": {
-      "item": "minecraft:hardened_clay"
+      "item": "#STONE"
     }
   }
 }

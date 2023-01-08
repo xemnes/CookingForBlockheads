@@ -6,6 +6,25 @@
   },
   "variants": {
     "normal": [{}],
-    "inventory": [{}]
+    "inventory": [{}],
+    "facing": {
+      "west": {
+        "transform": {
+          "rotation": {"y": 90}
+        }
+      },
+      "east": {
+        "transform": {
+          "rotation": {"y": -90}
+        }
+      },
+      "north": {
+      },
+      "south": {
+        "transform": {
+          "rotation": {"y": 180}
+        }
+      }
+    }
   }
 }

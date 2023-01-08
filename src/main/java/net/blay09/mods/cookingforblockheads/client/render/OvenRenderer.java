@@ -11,10 +11,18 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
+import static net.minecraft.util.EnumFacing.NORTH;
+import static net.minecraft.util.EnumFacing.SOUTH;
+
 public class OvenRenderer extends TileEntitySpecialRenderer<TileOven> {
 
     public static IBakedModel modelDoor;
     public static IBakedModel modelDoorActive;
+
+    public static IBakedModel modelCookingPot;
+    public static IBakedModel modelCookingSkillet;
+    public static IBakedModel modelCookingSaucepan;
+    public static IBakedModel modelCookingBakeware;
 
     @Override
     public void render(TileOven tileEntity, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -42,27 +50,66 @@ public class OvenRenderer extends TileEntitySpecialRenderer<TileOven> {
 
         // Render the oven tools
         GlStateManager.pushMatrix();
-        GlStateManager.color(1f, 1f, 1f, 1f);
-        GlStateManager.translate(x + 0.5, y + 1.05, z + 0.5);
+        GlStateManager.translate(x, y + 1, z);
         GlStateManager.rotate(blockAngle, 0f, 1f, 0f);
-        GlStateManager.scale(0.4f, 0.4f, 0.4f);
+        switch(tileEntity.getFacing()) {
+            case EAST:
+                GlStateManager.translate(1f, 0f, -1f);
+            case WEST:
+                GlStateManager.translate(0f, 0f, 1f);
+            case SOUTH:
+                GlStateManager.translate(-1f, 0f, -1f);
+            case NORTH:
+            default:
+                GlStateManager.translate(0f, 0f, 0f);
+        }
+        IBakedModel toolModel;
         ItemStack itemStack = tileEntity.getToolItem(0);
+        bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
         if (!itemStack.isEmpty()) {
-            RenderUtils.renderItem(itemRenderer, itemStack, -0.55f, 0f, 0.5f, 45f, 1f, 0f, 0f);
+            toolModel = modelCookingBakeware;
+            dispatcher.getBlockModelRenderer().renderModelBrightnessColor(toolModel, 1f, 1f, 1f, 1f);
         }
         itemStack = tileEntity.getToolItem(1);
         if (!itemStack.isEmpty()) {
-            RenderUtils.renderItem(itemRenderer, itemStack, 0.55f, 0f, 0.5f, 45f, 1f, 0f, 0f);
+            toolModel = modelCookingPot;
+            dispatcher.getBlockModelRenderer().renderModelBrightnessColor(toolModel, 1f, 1f, 1f, 1f);
         }
         itemStack = tileEntity.getToolItem(2);
         if (!itemStack.isEmpty()) {
-            RenderUtils.renderItem(itemRenderer, itemStack, -0.55f, 0f, -0.5f, 45f, 1f, 0f, 0f);
+            toolModel = modelCookingSaucepan;
+            dispatcher.getBlockModelRenderer().renderModelBrightnessColor(toolModel, 1f, 1f, 1f, 1f);
         }
         itemStack = tileEntity.getToolItem(3);
         if (!itemStack.isEmpty()) {
-            RenderUtils.renderItem(itemRenderer, itemStack, 0.55f, 0f, -0.5f, 45f, 1f, 0f, 0f);
+            toolModel = modelCookingSkillet;
+            dispatcher.getBlockModelRenderer().renderModelBrightnessColor(toolModel, 1f, 1f, 1f, 1f);
         }
         GlStateManager.popMatrix();
+
+
+//        GlStateManager.pushMatrix();
+//        GlStateManager.color(1f, 1f, 1f, 1f);
+//        GlStateManager.translate(x + 0.5, y + 1.05, z + 0.5);
+//        GlStateManager.rotate(blockAngle, 0f, 1f, 0f);
+//        GlStateManager.scale(0.4f, 0.4f, 0.4f);
+//        ItemStack itemStack = tileEntity.getToolItem(0);
+//        if (!itemStack.isEmpty()) {
+//            RenderUtils.renderItem(itemRenderer, itemStack, -0.55f, 0f, 0.5f, 45f, 1f, 0f, 0f);
+//        }
+//        itemStack = tileEntity.getToolItem(1);
+//        if (!itemStack.isEmpty()) {
+//            RenderUtils.renderItem(itemRenderer, itemStack, 0.55f, 0f, 0.5f, 45f, 1f, 0f, 0f);
+//        }
+//        itemStack = tileEntity.getToolItem(2);
+//        if (!itemStack.isEmpty()) {
+//            RenderUtils.renderItem(itemRenderer, itemStack, -0.55f, 0f, -0.5f, 45f, 1f, 0f, 0f);
+//        }
+//        itemStack = tileEntity.getToolItem(3);
+//        if (!itemStack.isEmpty()) {
+//            RenderUtils.renderItem(itemRenderer, itemStack, 0.55f, 0f, -0.5f, 45f, 1f, 0f, 0f);
+//        }
+//        GlStateManager.popMatrix();
 
         // Render the oven content when the door is open
         if (doorAngle > 0f) {

@@ -33,12 +33,11 @@ import java.util.List;
 public abstract class BlockKitchen extends BlockContainer {
 
     public static final PropertyDirection FACING = PropertyDirection.create("facing", input -> input != EnumFacing.DOWN && input != EnumFacing.UP);
-    public static final PropertyBool LOWERED = PropertyBool.create("lowered");
     public static final PropertyBool FLIPPED = PropertyBool.create("flipped");
     public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
 
-    private static final AxisAlignedBB BOUNDING_BOX_X = new AxisAlignedBB(0.03125, 0, 0, 0.96875, 0.9375, 1);
-    private static final AxisAlignedBB BOUNDING_BOX_Z = new AxisAlignedBB(0, 0, 0.03125, 1, 0.9375, 0.96875);
+    private static final AxisAlignedBB BOUNDING_BOX_X = new AxisAlignedBB(0, 0, 0, 1, 1, 1);
+    private static final AxisAlignedBB BOUNDING_BOX_Z = new AxisAlignedBB(0, 0, 0, 1, 1, 1);
 
     protected BlockKitchen(Material material) {
         super(material);

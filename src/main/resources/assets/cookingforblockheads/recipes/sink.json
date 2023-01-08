@@ -10,10 +10,11 @@
   ],
   "key": {
     "I": {
-      "item": "#IRON_INGOT"
+      "item": "minecraft:stone_slab",
+      "data": 7
     },
     "C": {
-      "item": "minecraft:hardened_clay"
+      "item": "#STONE"
     },
     "B": {
       "item": "minecraft:water_bucket"

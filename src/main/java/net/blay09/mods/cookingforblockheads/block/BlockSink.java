@@ -40,8 +40,8 @@ public class BlockSink extends BlockKitchen {
     public static final String name = "sink";
     public static final ResourceLocation registryName = new ResourceLocation(CookingForBlockheads.MOD_ID, name);
 
-    public BlockSink() {
-        super(Material.ROCK);
+    public BlockSink(Material material) {
+        super(material);
 
         setUnlocalizedName(registryName.toString());
         setSoundType(SoundType.STONE);
@@ -51,16 +51,12 @@ public class BlockSink extends BlockKitchen {
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, COLOR, FLIPPED);
+        return new BlockStateContainer(this, FACING, FLIPPED);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-        TileEntity tileEntity = world.getTileEntity(pos);
-        if (tileEntity instanceof TileSink) {
-            return state.withProperty(COLOR, ((TileSink) tileEntity).getDyedColor());
-        }
         return state;
     }
 
@@ -223,6 +219,7 @@ public class BlockSink extends BlockKitchen {
         for (String s : I18n.format("tooltip." + registryName + ".description").split("\\\\n")) {
             tooltip.add(TextFormatting.GRAY + s);
         }
+        tooltip.add(TextFormatting.AQUA + I18n.format("tooltip.cookingforblockheads:dyeable"));
     }
 
     @Override

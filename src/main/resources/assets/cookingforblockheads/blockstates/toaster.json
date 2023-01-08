@@ -4,11 +4,10 @@
     "model": "cookingforblockheads:toaster",
     "transform": "forge:default-block",
     "textures": {
-      "particle": "cookingforblockheads:blocks/toaster",
-      "toaster_front": "cookingforblockheads:blocks/toaster_front",
-      "toaster_bottom": "cookingforblockheads:blocks/toaster_bottom",
-      "toaster_feet": "cookingforblockheads:blocks/toaster_feet",
-      "toaster_lever": "cookingforblockheads:blocks/toaster_lever"
+      "particle": "cookingforblockheads:blocks/toaster_front",
+	  "toaster_side": "cookingforblockheads:blocks/toaster_side",
+	  "toaster_front": "cookingforblockheads:blocks/toaster_front",
+	  "toaster_top": "cookingforblockheads:blocks/toaster_top"
     }
   },
   "variants": {
@@ -17,35 +16,28 @@
     "facing": {
       "west": {
         "transform": {
-          "translation": [0, -0.25, 0],
-          "scale": 0.5,
           "rotation": {"y": -90}
         }
       },
       "east": {
         "transform": {
-          "translation": [0, -0.25, 0],
-          "scale": 0.5,
           "rotation": {"y": 90}
         }
       },
       "north": {
-        "transform": {
-          "translation": [0, -0.25, 0],
-          "scale": 0.5
-        }
       },
       "south": {
         "transform": {
-          "translation": [0, -0.25, 0],
-          "scale": 0.5,
           "rotation": {"y": 180}
         }
       }
     },
     "active": {
       "true": {
-        "model": "cookingforblockheads:toaster_active"
+        "model": "cookingforblockheads:toaster_active",
+		"textures": {
+		  "toaster_side": "cookingforblockheads:blocks/toaster_side_active"
+		}
       },
       "false": {
       }

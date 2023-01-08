@@ -40,24 +40,15 @@ public class BlockFruitBasket extends BlockKitchen {
     }
 
     @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos) {
-        if (shouldBlockRenderLowered(world, pos)) {
-            return BOUNDING_BOX.expand(0, -0.05, 0);
-        }
-
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return BOUNDING_BOX;
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING, LOWERED);
+        return new BlockStateContainer(this, FACING);
     }
 
-    @Override
-    @SuppressWarnings("deprecation")
-    public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos) {
-        return state.withProperty(LOWERED, shouldBlockRenderLowered(world, pos));
-    }
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {

@@ -1,6 +1,7 @@
 package net.blay09.mods.cookingforblockheads.tile;
 
 import net.blay09.mods.cookingforblockheads.api.capability.CapabilityKitchenConnector;
+import net.blay09.mods.cookingforblockheads.block.ModBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.nbt.NBTTagCompound;
@@ -18,7 +19,7 @@ public class TileCorner extends TileEntity implements IDyeableKitchen {
 
     private final CapabilityKitchenConnector.IKitchenConnector connector = CapabilityKitchenConnector.CAPABILITY.getDefaultInstance();
 
-    private EnumDyeColor color = EnumDyeColor.WHITE;
+    private EnumDyeColor color = EnumDyeColor.SILVER;
 
     @Override
     public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
@@ -71,17 +72,36 @@ public class TileCorner extends TileEntity implements IDyeableKitchen {
         return new SPacketUpdateTileEntity(pos, 0, getUpdateTag());
     }
 
+    public TileCorner getBaseTile() {
+        if (!hasWorld()) {
+            return this;
+        }
+
+        if (world.getBlockState(pos.down()).getBlock() == ModBlocks.corner) {
+            TileCorner baseTile = (TileCorner) world.getTileEntity(pos.down());
+            if (baseTile != null) {
+                return baseTile;
+            }
+        }
+
+        return this;
+    }
+
     @Override
     public void setDyedColor(EnumDyeColor color) {
         this.color = color;
-        IBlockState state = world.getBlockState(pos);
-        world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 3);
-        markDirty();
+        markDirtyAndUpdate();
     }
 
     @Override
     public EnumDyeColor getDyedColor() {
         return color;
+    }
+
+    public void markDirtyAndUpdate() {
+        IBlockState state = world.getBlockState(pos);
+        world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 3);
+        markDirty();
     }
 
 }

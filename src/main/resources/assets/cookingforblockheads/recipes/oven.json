@@ -10,11 +10,10 @@
   ],
   "key": {
     "I": {
-      "item": "#IRON_INGOT"
+      "item": "minecraft:brick"
     },
     "G": {
-      "item": "minecraft:stained_glass",
-      "data": 15
+      "item": "#IRON_INGOT"
     },
     "F": {
       "item": "minecraft:furnace"

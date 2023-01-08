@@ -6,8 +6,7 @@
     "textures": {
       "particle": "cookingforblockheads:blocks/milk_glass",
       "milk_glass": "cookingforblockheads:blocks/milk_glass",
-      "milk_lid": "cookingforblockheads:blocks/milk_lid",
-      "milk_glass_top": "cookingforblockheads:blocks/milk_glass_top"
+	  "milk": "cookingforblockheads:blocks/milk"
     }
   },
   "variants": {
@@ -16,17 +15,7 @@
     ],
     "inventory": [
       {
-        "model": "cookingforblockheads:milk_jar_inventory",
-        "transform": {
-          "gui": {
-            "rotation": [
-              {"x": 30},
-              {"y": 225}
-            ],
-            "translation": [0, -0.05, 0]
-          },
-          "scale": 0.5
-        }
+        "model": "cookingforblockheads:milk_jar"
       }
     ],
     "facing": {
@@ -37,15 +26,6 @@
       "north": {
       },
       "south": {
-      }
-    },
-    "lowered": {
-      "true": {
-        "transform": {
-          "translation": [ 0, -0.05, 0]
-        }
-      },
-      "false": {
       }
     }
   }

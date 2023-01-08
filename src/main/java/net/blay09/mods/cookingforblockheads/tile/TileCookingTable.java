@@ -1,6 +1,7 @@
 package net.blay09.mods.cookingforblockheads.tile;
 
 import net.blay09.mods.cookingforblockheads.api.capability.CapabilityKitchenConnector;
+import net.blay09.mods.cookingforblockheads.block.ModBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,7 @@ import javax.annotation.Nullable;
 public class TileCookingTable extends TileEntity implements IDyeableKitchen {
 
     private ItemStack noFilterBook = ItemStack.EMPTY;
-    private EnumDyeColor color = EnumDyeColor.WHITE;
+    private EnumDyeColor color = EnumDyeColor.SILVER;
 
     public boolean hasNoFilterBook() {
         return !noFilterBook.isEmpty();
@@ -88,14 +89,33 @@ public class TileCookingTable extends TileEntity implements IDyeableKitchen {
         return oldState.getBlock() != newSate.getBlock();
     }
 
-    @Override
-    public EnumDyeColor getDyedColor() {
-        return color;
+    public TileCookingTable getBaseTile() {
+        if (!hasWorld()) {
+            return this;
+        }
+
+        if (world.getBlockState(pos.down()).getBlock() == ModBlocks.cookingTable) {
+            TileCookingTable baseTile = (TileCookingTable) world.getTileEntity(pos.down());
+            if (baseTile != null) {
+                return baseTile;
+            }
+        }
+
+        return this;
     }
 
     @Override
     public void setDyedColor(EnumDyeColor color) {
         this.color = color;
+        markDirtyAndUpdate();
+    }
+
+    @Override
+    public EnumDyeColor getDyedColor() {
+        return color;
+    }
+
+    public void markDirtyAndUpdate() {
         IBlockState state = world.getBlockState(pos);
         world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 3);
         markDirty();

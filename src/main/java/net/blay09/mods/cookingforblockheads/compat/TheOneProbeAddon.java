@@ -15,6 +15,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -40,12 +41,7 @@ public class TheOneProbeAddon implements Function<ITheOneProbe, Void> {
         @Override
         public void addProbeInfo(ProbeMode mode, IProbeInfo info, EntityPlayer player, World world, IBlockState state, IProbeHitData data) {
             // NOTE no lang support in The One Probe atm...
-            if (state.getBlock() instanceof BlockMilkJar) {
-                TileMilkJar tileEntity = tryGetTileEntity(world, data.getPos(), TileMilkJar.class);
-                if (tileEntity != null) {
-                    addMilkJarInfo(tileEntity, mode, info);
-                }
-            } else if (state.getBlock() instanceof BlockToaster) {
+            if (state.getBlock() instanceof BlockToaster) {
                 TileToaster tileEntity = tryGetTileEntity(world, data.getPos(), TileToaster.class);
                 if (tileEntity != null) {
                     addToasterInfo(tileEntity, mode, info);
@@ -53,28 +49,28 @@ public class TheOneProbeAddon implements Function<ITheOneProbe, Void> {
             } else if (state.getBlock() instanceof BlockOven) {
                 TileOven tileEntity = tryGetTileEntity(world, data.getPos(), TileOven.class);
                 if (tileEntity != null && tileEntity.hasPowerUpgrade()) {
-                    info.text("Upgrade: Heating Unit");
+                    info.text(TextFormatting.YELLOW + "Upgrade:" + TextFormatting.GOLD + " Heating Unit");
                 }
             } else if (state.getBlock() instanceof BlockFridge) {
                 TileFridge tileEntity = tryGetTileEntity(world, data.getPos(), TileFridge.class);
                 if (tileEntity != null && tileEntity.getBaseFridge().hasIceUpgrade()) {
-                    info.text("Upgrade: Ice Unit");
+                    info.text(TextFormatting.YELLOW + "Upgrade:" + TextFormatting.AQUA + "Ice Unit");
                 }
 
                 if (tileEntity != null && tileEntity.getBaseFridge().hasPreservationUpgrade()) {
-                    info.text("Upgrade: Preservation Chamber");
+                    info.text(TextFormatting.YELLOW + "Upgrade:" + TextFormatting.LIGHT_PURPLE + "Preservation Chamber");
                 }
             }
         }
 
-        private void addMilkJarInfo(TileMilkJar tileEntity, ProbeMode mode, IProbeInfo info) {
-            info.text(String.format("Milk Stored: %d/%d", (int) tileEntity.getMilkAmount(), (int) tileEntity.getMilkCapacity()));
-        }
-
         private void addToasterInfo(TileToaster tileEntity, ProbeMode mode, IProbeInfo info) {
             if (tileEntity.isActive()) {
-                info.text(String.format("Toasting... (%s)", (int) (tileEntity.getToastProgress() * 100)) + "%");
-                info.progress((int) (tileEntity.getToastProgress() * 100), 100);
+                info.progress((int) (tileEntity.getToastProgress() * 100), 100,
+                        info.defaultProgressStyle()
+                                .prefix("Toasting: ")
+                                .suffix("%")
+                                .filledColor((tileEntity.getToastProgress() * 100) <= 30 ? 0xffc4ac33 : (tileEntity.getToastProgress() * 100) > 30 && (tileEntity.getToastProgress() * 100) <= 70 ? 0xffbd871c : 0xff8f5d1d)
+                );
             }
         }
 

@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -16,8 +15,8 @@ import net.minecraftforge.items.IItemHandler;
 
 public class CounterRenderer extends TileEntitySpecialRenderer<TileCounter> {
 
-    public static IBakedModel[][] models;
-    public static IBakedModel[][] modelsFlipped;
+    public static IBakedModel[] models;
+    public static IBakedModel[] modelsFlipped;
 
     private static final float[] doorOriginsX = new float[]{
             1 - 0.84375f,
@@ -49,8 +48,16 @@ public class CounterRenderer extends TileEntitySpecialRenderer<TileCounter> {
         return 0.35f;
     }
 
-    protected IBakedModel getDoorModel(EnumFacing facing, EnumDyeColor blockColor, boolean isFlipped) {
-        return isFlipped ? modelsFlipped[facing.getHorizontalIndex()][blockColor.getMetadata()] : models[facing.getHorizontalIndex()][blockColor.getMetadata()];
+    protected float getFrontShelfOffsetX() {
+        return -0.5f;
+    }
+
+    protected float getBackShelfOffsetX() {
+        return 0.5f;
+    }
+
+    protected IBakedModel getDoorModel(EnumFacing facing, boolean isFlipped) {
+        return isFlipped ? modelsFlipped[facing.getHorizontalIndex()] : models[facing.getHorizontalIndex()];
     }
 
     @Override
@@ -63,7 +70,6 @@ public class CounterRenderer extends TileEntitySpecialRenderer<TileCounter> {
         RenderItem itemRenderer = Minecraft.getMinecraft().getRenderItem();
 
         EnumFacing facing = tileEntity.getFacing();
-        EnumDyeColor blockColor = tileEntity.getDyedColor();
         float blockAngle = RenderUtils.getFacingAngle(tileEntity.getFacing());
         float doorAngle = tileEntity.getDoorAnimator().getRenderAngle(partialTicks);
         boolean isFlipped = tileEntity.isFlipped();
@@ -82,18 +88,20 @@ public class CounterRenderer extends TileEntitySpecialRenderer<TileCounter> {
             doorDirection = 1f;
         }
 
-        /*GlStateManager.pushMatrix();
-        GlStateManager.translate(doorOriginX, 0.25f, doorOriginZ);
-        GlStateManager.scale(0.1f, 0.1f, 0.1f);
-        RenderUtils.renderItem(itemRenderer, new ItemStack(Items.APPLE), 0f, 0f, 0f, 0f, 0f, 1f, 0f);
-        GlStateManager.popMatrix();*/
 
         GlStateManager.translate(doorOriginX, 0f, doorOriginZ);
         GlStateManager.rotate(doorDirection * (float) Math.toDegrees(doorAngle), 0f, 1f, 0f);
         GlStateManager.translate(-doorOriginX, 0f, -doorOriginZ);
         bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-        IBakedModel model = getDoorModel(facing, blockColor, isFlipped);
-        dispatcher.getBlockModelRenderer().renderModelBrightnessColor(model, 1f, 1f, 1f, 1f);
+        EnumDyeColor dyeColor = tileEntity.getDyedColor();
+        int color = dyeColor.getColorValue();
+        IBakedModel model = getDoorModel(facing, isFlipped);
+        if (tileEntity.isWood()) {
+            dispatcher.getBlockModelRenderer().renderModelBrightnessColor(model, 1f, 1f, 1f, 1f);
+        }
+        else {
+            dispatcher.getBlockModelRenderer().renderModelBrightnessColor(model, 1f, (float) (color >> 16 & 255) / 255f, (float) (color >> 8 & 255) / 255f, (float) (color & 255) / 255f);
+        }
         GlStateManager.popMatrix();
 
         // Render the content if the door is open
@@ -115,7 +123,7 @@ public class CounterRenderer extends TileEntitySpecialRenderer<TileCounter> {
                     float spacing = 2f / (float) itemsPerRow;
                     offsetX = (rowIndex - itemsPerRow / 2f) * -spacing + (shelfIndex >= itemsPerRow ? -0.2f : 0f);
                     offsetY = i < itemsPerShelf ? getTopShelfOffsetY() : getBottomShelfOffsetY();
-                    offsetZ = shelfIndex < itemsPerRow ? 0.5f : -0.5f;
+                    offsetZ = shelfIndex < itemsPerRow ? getBackShelfOffsetX() : getFrontShelfOffsetX();
                     RenderUtils.renderItem(itemRenderer, itemStack, offsetX, offsetY, offsetZ, 45f, 0f, 1f, 0f);
                 }
             }

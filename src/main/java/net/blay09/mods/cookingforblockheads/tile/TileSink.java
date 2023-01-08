@@ -5,6 +5,7 @@ import net.blay09.mods.cookingforblockheads.api.SourceItem;
 import net.blay09.mods.cookingforblockheads.api.capability.CapabilityKitchenItemProvider;
 import net.blay09.mods.cookingforblockheads.api.capability.DefaultKitchenItemProvider;
 import net.blay09.mods.cookingforblockheads.api.capability.IKitchenItemProvider;
+import net.blay09.mods.cookingforblockheads.block.ModBlocks;
 import net.blay09.mods.cookingforblockheads.registry.CookingRegistry;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
@@ -164,7 +165,7 @@ public class TileSink extends TileEntity implements IDyeableKitchen {
     private final FluidTank waterTank = new WaterTank(16000);
     private final SinkItemProvider itemProvider = new SinkItemProvider(waterTank);
 
-    private EnumDyeColor color = EnumDyeColor.WHITE;
+    private EnumDyeColor color = EnumDyeColor.SILVER;
 
     @Override
     public NBTTagCompound getUpdateTag() {
@@ -229,14 +230,33 @@ public class TileSink extends TileEntity implements IDyeableKitchen {
         return oldState.getBlock() != newSate.getBlock();
     }
 
-    @Override
-    public EnumDyeColor getDyedColor() {
-        return color;
+    public TileSink getBaseTile() {
+        if (!hasWorld()) {
+            return this;
+        }
+
+        if (world.getBlockState(pos.down()).getBlock() == ModBlocks.sink) {
+            TileSink baseTile = (TileSink) world.getTileEntity(pos.down());
+            if (baseTile != null) {
+                return baseTile;
+            }
+        }
+
+        return this;
     }
 
     @Override
     public void setDyedColor(EnumDyeColor color) {
         this.color = color;
+        markDirtyAndUpdate();
+    }
+
+    @Override
+    public EnumDyeColor getDyedColor() {
+        return color;
+    }
+
+    public void markDirtyAndUpdate() {
         IBlockState state = world.getBlockState(pos);
         world.markAndNotifyBlock(pos, world.getChunkFromBlockCoords(pos), state, state, 3);
         markDirty();

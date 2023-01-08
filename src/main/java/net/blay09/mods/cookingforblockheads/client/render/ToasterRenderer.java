@@ -28,14 +28,14 @@ public class ToasterRenderer extends TileEntitySpecialRenderer<TileToaster> {
         if (!leftStack.isEmpty() || !rightStack.isEmpty()) {
             GlStateManager.pushMatrix();
             GlStateManager.color(1f, 1f, 1f, 1f);
-            GlStateManager.translate(x + 0.5, y + 0.25 + (tileEntity.isActive() ? -0.075 : 0), z + 0.5);
+            GlStateManager.translate(x + 0.5, y + 0.55 + (tileEntity.isActive() ? -0.175 : 0), z + 0.5);
             GlStateManager.rotate(RenderUtils.getFacingAngle(state), 0f, 1f, 0f);
-            GlStateManager.scale(0.4f, 0.4f, 0.4f);
+            GlStateManager.scale(0.6f, 0.6f, 0.6f);
             if (!leftStack.isEmpty()) {
-                RenderUtils.renderItem(itemRenderer, leftStack, -0.025f, 0f, 0.15f, 0f, 0f, 0f, 0f);
+                RenderUtils.renderItem(itemRenderer, leftStack, -0.025f, 0f, 0.2f, 0f, 0f, 0f, 0f);
             }
             if (!rightStack.isEmpty()) {
-                RenderUtils.renderItem(itemRenderer, rightStack, -0.025f, 0f, -0.15f, 0f, 0f, 0f, 0f);
+                RenderUtils.renderItem(itemRenderer, rightStack, -0.025f, 0f, -0.2f, 0f, 0f, 0f, 0f);
             }
             GlStateManager.popMatrix();
         }

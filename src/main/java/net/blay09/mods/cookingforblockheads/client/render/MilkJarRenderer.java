@@ -28,7 +28,6 @@ public class MilkJarRenderer extends TileEntitySpecialRenderer<TileMilkJar> {
         }
 
         if (tileEntity.getMilkAmount() > 0) {
-            RenderHelper.disableStandardItemLighting();
             GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             GlStateManager.enableBlend();
             GlStateManager.disableCull();

@@ -1,203 +1,77 @@
 {
-  "__comment": "Designed by Blay09 with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net",
-  "elements": [
-    {
-      "__comment": "Glass",
-      "from": [
-        5,
-        0,
-        5
-      ],
-      "to": [
-        11,
-        7,
-        11
-      ],
-      "faces": {
-        "down": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_glass"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_glass"
-        },
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_glass"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_glass"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_glass"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_glass"
-        }
-      }
-    },
-    {
-      "__comment": "GlassTop",
-      "from": [
-        6,
-        7,
-        6
-      ],
-      "to": [
-        10,
-        8,
-        10
-      ],
-      "faces": {
-        "up": {
-          "uv": [
-            0,
-            3,
-            13,
-            16
-          ],
-          "texture": "#milk_glass_top"
-        },
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            3
-          ],
-          "texture": "#milk_glass_top"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            3
-          ],
-          "texture": "#milk_glass_top"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            3
-          ],
-          "texture": "#milk_glass_top"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            3
-          ],
-          "texture": "#milk_glass_top"
-        }
-      }
-    },
-    {
-      "__comment": "Lid",
-      "from": [
-        7,
-        6.5,
-        7
-      ],
-      "to": [
-        9,
-        9,
-        9
-      ],
-      "faces": {
-        "down": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_lid"
-        },
-        "up": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_lid"
-        },
-        "north": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_lid"
-        },
-        "south": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_lid"
-        },
-        "west": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_lid"
-        },
-        "east": {
-          "uv": [
-            0,
-            0,
-            16,
-            16
-          ],
-          "texture": "#milk_lid"
-        }
-      }
-    }
-  ]
+	"__comment": "Designed by Xemnes with Cubik Studio - https://cubik.studio",
+	"elements": [ 	 
+		{
+			"__comment": "Glass",
+			"from": [ 5, 0, 5 ],
+			"to": [ 11, 7, 11 ],
+			"faces": {
+				"down": { "uv": [ 10, 10, 16, 16 ], "texture": "#milk_glass" },
+				"up": { "uv": [ 10, 10, 16, 16 ], "texture": "#milk_glass" },
+				"north": { "uv": [ 0, 9, 6, 16 ], "texture": "#milk_glass" },
+				"south": { "uv": [ 0, 9, 6, 16 ], "texture": "#milk_glass" },
+				"west": { "uv": [ 0, 9, 6, 16 ], "texture": "#milk_glass" },
+				"east": { "uv": [ 0, 9, 6, 16 ], "texture": "#milk_glass" }
+			}
+		},
+		{
+			"__comment": "GlassTop",
+			"from": [ 6, 7, 6 ],
+			"to": [ 10, 8, 10 ],
+			"faces": {
+				"up": { "uv": [ 11, 6, 15, 10 ], "texture": "#milk_glass" },
+				"north": { "uv": [ 1, 8, 5, 9 ], "texture": "#milk_glass" },
+				"south": { "uv": [ 1, 8, 5, 9 ], "texture": "#milk_glass" },
+				"west": { "uv": [ 1, 8, 5, 9 ], "texture": "#milk_glass" },
+				"east": { "uv": [ 1, 8, 5, 9 ], "texture": "#milk_glass" }
+			}
+		},
+		{
+			"__comment": "Lid",
+			"from": [ 7, 6.5, 7 ],
+			"to": [ 9, 9, 9 ],
+			"faces": {
+				"down": { "uv": [ 12, 3, 14, 5 ], "texture": "#milk_glass" },
+				"up": { "uv": [ 12, 3, 14, 5 ], "texture": "#milk_glass" },
+				"north": { "uv": [ 2, 7, 4, 8 ], "texture": "#milk_glass" },
+				"south": { "uv": [ 2, 7, 4, 8 ], "texture": "#milk_glass" },
+				"west": { "uv": [ 2, 7, 4, 8 ], "texture": "#milk_glass" },
+				"east": { "uv": [ 2, 7, 4, 8 ], "texture": "#milk_glass" }
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation":  [ 75, 45, 0 ],
+			"translation":  [ 0, 1.1086, 2.0869 ],
+			"scale":  [ 0.375, 0.375, 0.375 ]
+		},
+		"thirdperson_lefthand": {
+			"rotation":  [ 75, 45, 0 ],
+			"translation":  [ 0, 1.1086, 2.0869 ],
+			"scale":  [ 0.375, 0.375, 0.375 ]
+		},
+		"firstperson_righthand": {
+			"rotation":  [ 0, 45, 0 ],
+			"translation":  [ 0, 4.1739, 0 ],
+			"scale":  [ 0.4, 0.4, 0.4 ]
+		},
+		"firstperson_lefthand": {
+			"rotation":  [ 0, 45, 0 ],
+			"translation":  [ 0, 4.1739, 0 ],
+			"scale":  [ 0.4, 0.4, 0.4 ]
+		},
+		"gui": {
+			"rotation":  [ 30, 135, 0 ],
+			"translation":  [ 0, 1.3913, 0 ],
+			"scale":  [ 0.825, 0.825, 0.825 ]
+		},
+		"ground": {
+			"translation":  [ 0, 3, 0 ],
+			"scale":  [ 0.35, 0.35, 0.35 ]
+		},
+		"fixed": {
+			"scale":  [ 0.5, 0.5, 0.5 ]
+		}
+	}
 }

@@ -1,8 +1,8 @@
 {
   "__comment": "Designed by Blay09 with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net",
   "textures": {
-    "particle": "cookingforblockheads:blocks/tool_rack",
-    "texture": "cookingforblockheads:blocks/tool_rack"
+    "particle": "cookingforblockheads:blocks/racks",
+    "texture": "cookingforblockheads:blocks/racks"
   },
   "elements": [
     {

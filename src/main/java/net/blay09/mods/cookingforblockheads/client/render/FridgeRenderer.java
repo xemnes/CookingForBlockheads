@@ -22,16 +22,11 @@ import net.minecraftforge.items.IItemHandler;
 public class FridgeRenderer extends TileEntitySpecialRenderer<TileFridge> {
 
     public static IBakedModel modelDoor;
+    public static IBakedModel modelDoorFlipped;
     public static IBakedModel modelDoorLarge;
-    public static IBakedModel modelDoorIceUnit;
-    public static IBakedModel modelDoorIceUnitLarge;
+    public static IBakedModel modelDoorLargeFlipped;
     public static IBakedModel modelHandle;
     public static IBakedModel modelHandleLarge;
-
-    private final ModelFridgeDoor modelFridgeDoor = new ModelFridgeDoor();
-    private final ModelFridgeLargeDoor modelFridgeLargeDoor = new ModelFridgeLargeDoor();
-    private final ResourceLocation textureFridgeDoor = new ResourceLocation(CookingForBlockheads.MOD_ID, "textures/entity/fridge_door.png");
-    private final ResourceLocation textureFridgeLargeDoor = new ResourceLocation(CookingForBlockheads.MOD_ID, "textures/entity/fridge_large_door.png");
 
     @Override
     public void render(TileFridge tileEntity, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
@@ -75,10 +70,24 @@ public class FridgeRenderer extends TileEntitySpecialRenderer<TileFridge> {
 
         bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
         IBakedModel model;
-        if (isLarge) {
-            model = hasIceUnit ? modelDoorIceUnitLarge : modelDoorLarge;
+//        if (isLarge) {
+//            model = hasIceUnit ? modelDoorIceUnitLarge : modelDoorLarge;
+//        } else {
+//            model = hasIceUnit ? modelDoorIceUnit : modelDoor;
+//        }
+
+        if (isFlipped) {
+            model = modelDoorFlipped;
         } else {
-            model = hasIceUnit ? modelDoorIceUnit : modelDoor;
+            model = modelDoor;
+        }
+
+        if (isLarge) {
+            if (isFlipped) {
+                model = modelDoorLargeFlipped;
+            } else {
+                model = modelDoorLarge;
+            }
         }
 
         IBakedModel handleModel = isLarge ? modelHandleLarge : modelHandle;
@@ -86,7 +95,7 @@ public class FridgeRenderer extends TileEntitySpecialRenderer<TileFridge> {
         int color = fridgeColor.getColorValue();
         dispatcher.getBlockModelRenderer().renderModelBrightnessColor(model, 1f, (float) (color >> 16 & 255) / 255f, (float) (color >> 8 & 255) / 255f, (float) (color & 255) / 255f);
         if (isFlipped) {
-            GlStateManager.translate(isLarge ? 0.6875f : 0.625f, 0f, 0f);
+            GlStateManager.translate(isLarge ? 0.6875f : 0.688f, 0f, 0f);
         }
         dispatcher.getBlockModelRenderer().renderModelBrightnessColor(handleModel, 1f, 1f, 1f, 1f);
         GlStateManager.popMatrix();
@@ -129,7 +138,7 @@ public class FridgeRenderer extends TileEntitySpecialRenderer<TileFridge> {
             GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
             GlStateManager.rotate(RenderUtils.getFacingAngle(state), 0f, 1f, 0f);
             GlStateManager.scale(0.3f, 0.3f, 0.3f);
-            float topY = fridgeType == BlockFridge.FridgeType.LARGE ? 3.25f : 0.35f;
+            float topY = fridgeType == BlockFridge.FridgeType.LARGE ? 3.65f : 0.72f;
             IItemHandler itemHandler = tileEntity.getCombinedItemHandler();
             for (int i = itemHandler.getSlots() - 1; i >= 0; i--) {
                 ItemStack itemStack = itemHandler.getStackInSlot(i);
@@ -138,7 +147,7 @@ public class FridgeRenderer extends TileEntitySpecialRenderer<TileFridge> {
                     if (fridgeType == BlockFridge.FridgeType.LARGE) {
                         int rowIndex = i % 18;
                         offsetX = 0.7f - (rowIndex % 9) * 0.175f;
-                        offsetY = topY - i / 18 * 1.25f;
+                        offsetY = topY - i / 18 * 1.45f;
                         offsetZ = 0.5f - (rowIndex / 9) * 0.9f;
                     } else {
                         int rowIndex = i % 13;

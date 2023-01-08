@@ -17,17 +17,7 @@
     ],
     "inventory": [
       {
-        "model": "cookingforblockheads:cow_jar_inventory",
-        "transform": {
-          "gui": {
-            "rotation": [
-              {"x": 30},
-              {"y": 225}
-            ],
-            "translation": [0, -0.05, 0]
-          },
-          "scale": 0.5
-        }
+        "model": "cookingforblockheads:cow_jar_inventory"
       }
     ],
     "facing": {
@@ -38,15 +28,6 @@
       "north": {
       },
       "south": {
-      }
-    },
-    "lowered": {
-      "true": {
-        "transform": {
-          "translation": [ 0, -0.05, 0]
-        }
-      },
-      "false": {
       }
     }
   }

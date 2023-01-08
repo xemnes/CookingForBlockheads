@@ -6,7 +6,6 @@
       "texture": "cookingforblockheads:blocks/oven_side",
       "ovenfront": "cookingforblockheads:blocks/oven_front",
       "ovenfront_active": "cookingforblockheads:blocks/oven_front_active",
-      "oventop": "cookingforblockheads:blocks/oven_top",
       "ovenbottom": "cookingforblockheads:blocks/oven_bottom",
       "ovengrid": "cookingforblockheads:blocks/oven_grid",
       "backsplash": "cookingforblockheads:blocks/oven_side"
@@ -16,9 +15,24 @@
   "variants": {
     "normal": [{}],
     "inventory": [{
-      "model": "cookingforblockheads:oven_inventory"
+      "model": "cookingforblockheads:oven_inventory",
+      "textures": {
+        "oventop": "cookingforblockheads:blocks/oven_top"
+       }
     }],
-    "powered": {
+    "active": {
+      "true": {
+        "textures": {
+		  "oventop": "cookingforblockheads:blocks/oven_top_active"
+        }
+      },
+      "false": {
+        "textures": {
+		  "oventop": "cookingforblockheads:blocks/oven_top"
+        }
+      }
+    },
+	"powered": {
       "true": {
         "textures": {
           "ovenfront": "cookingforblockheads:blocks/oven_front_powered",

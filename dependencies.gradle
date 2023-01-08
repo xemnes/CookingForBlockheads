@@ -6,6 +6,6 @@ dependencies {
     provided "quark:Quark:r1.4:122"
     provided "crafttweaker:CraftTweaker2:1.12:4.1.4"
     provided "immersive-engineering:ImmersiveEngineering:0.12:77"
-    provided "the-one-probe:theoneprobe:1.12:1.4.19"
+    deobfCompile "the-one-probe:theoneprobe:1.12:1.4.19"
     provided "mouse-tweaks:MouseTweaks:2.8:mc1.12.1"
 }
